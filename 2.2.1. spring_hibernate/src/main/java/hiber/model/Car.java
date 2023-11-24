@@ -5,9 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cars")
 public class Car {
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,11 +48,12 @@ public class Car {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
+    @Override
+    public String toString() {
+        return "Car{" +
+               "model='" + model + '\'' +
+               ", series=" + series +
+               '}';
     }
 }
